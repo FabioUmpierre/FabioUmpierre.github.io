@@ -1,1 +1,41 @@
-Hello World
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>My First JavaScript</h1>
+
+    <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+        Click me to display Date and Time.</button>
+
+    <p id="demo"></p>
+    <script>
+        console.log("hello world")
+        var myHeaders = new Headers();
+
+        var myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("http://3.139.86.53/us", myInit)
+            .then(function (response) {
+                console.log(response);
+                return response.json();
+            })
+            .then(function (body) {
+                console.log(body)
+                body.map(x => {
+                    console.log(x.name)
+                    var p = document.createElement("p");
+                    p.innerHTML = x.name;
+                    document.body.appendChild(p);
+                })
+            });
+
+    </script>
+</body>
+
+</html>
